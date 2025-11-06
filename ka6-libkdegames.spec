@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		qtver		5.15.2
 %define		kaname		libkdegames
 Summary:	Libkdegames
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d345a82fe43d3ebb6116fae25fa1de8d
+# Source0-md5:	4b3aa0564da204d7675fbdab250bbbd5
 URL:		http://www.kde.org/
 BuildRequires:	OpenAL-devel
 BuildRequires:	Qt6Core-devel
@@ -111,15 +111,15 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %ghost %{_libdir}/libKDEGames6.so.6
-%attr(755,root,root) %{_libdir}/libKDEGames6.so.*.*
+%{_libdir}/libKDEGames6.so.*.*
 %ghost %{_libdir}/libKDEGames6Private.so.6
-%attr(755,root,root) %{_libdir}/libKDEGames6Private.so.*.*
+%{_libdir}/libKDEGames6Private.so.*.*
 %dir %{_libdir}/qt6/qml/org/kde/games
 %dir %{_libdir}/qt6/qml/org/kde/games/core
 %{_libdir}/qt6/qml/org/kde/games/core/KGameItem.qml
 %{_libdir}/qt6/qml/org/kde/games/core/corebindingsplugin.qmltypes
 %{_libdir}/qt6/qml/org/kde/games/core/kde-qmlmodule.version
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/games/core/libcorebindingsplugin.so
+%{_libdir}/qt6/qml/org/kde/games/core/libcorebindingsplugin.so
 %{_libdir}/qt6/qml/org/kde/games/core/qmldir
 %{_datadir}/carddecks
 %{_datadir}/qlogging-categories6/libkdegames.categories
