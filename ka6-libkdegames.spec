@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.12.0
+%define		kdeappsver	25.12.1
 %define		qtver		5.15.2
 %define		kaname		libkdegames
 Summary:	Libkdegames
 Name:		ka6-%{kaname}
-Version:	25.12.0
+Version:	25.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	e6ad1845e698a67dc5f4e76c60dcf68a
+# Source0-md5:	9494c4b35e8b96b5152adef377bd1537
 URL:		http://www.kde.org/
 BuildRequires:	OpenAL-devel
 BuildRequires:	Qt6Core-devel
@@ -56,6 +56,7 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	%{name}-data = %{version}-%{release}
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-%{kaname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,6 +66,19 @@ Base library common to many KDE games.
 
 %description -l pl.UTF-8
 Bazowa biblioteka wspólna dla wielu gier KDE.
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications
+Requires(post,postun):	desktop-file-utils
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -108,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 %ghost %{_libdir}/libKDEGames6.so.6
 %{_libdir}/libKDEGames6.so.*.*
@@ -121,6 +135,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/qml/org/kde/games/core/kde-qmlmodule.version
 %{_libdir}/qt6/qml/org/kde/games/core/libcorebindingsplugin.so
 %{_libdir}/qt6/qml/org/kde/games/core/qmldir
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_datadir}/carddecks
 %{_datadir}/qlogging-categories6/libkdegames.categories
 
