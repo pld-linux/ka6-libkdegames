@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	26.08.2
+%define		kdeappsver	26.08.3
 %define		qtver		5.15.2
 %define		kaname		libkdegames
 Summary:	Libkdegames
 Name:		ka6-%{kaname}
-Version:	26.08.2
+Version:	26.08.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	533879653f7265c801fe4f0b0d93281f
+# Source0-md5:	0add5edfaab518a6ea83e386e24c8501
 URL:		http://www.kde.org/
 BuildRequires:	OpenAL-devel
 BuildRequires:	Qt6Core-devel
